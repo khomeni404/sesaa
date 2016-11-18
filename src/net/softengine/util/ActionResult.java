@@ -2,7 +2,6 @@ package net.softengine.util;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class ActionResult {
     private boolean success;

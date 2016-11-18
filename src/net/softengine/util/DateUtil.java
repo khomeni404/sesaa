@@ -3,6 +3,10 @@ package net.softengine.util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -92,6 +96,26 @@ public class DateUtil {
     public static String toDate(Date date) {
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(date);
+    }
+
+    public static Date getEndOfDay(Date date) {
+        LocalDateTime localDateTime = dateToLocalDateTime(date);
+        LocalDateTime endOfDay = localDateTime.with(LocalTime.MAX);
+        return localDateTimeToDate(endOfDay);
+    }
+
+    public static Date getStartOfDay(Date date) {
+        LocalDateTime localDateTime = dateToLocalDateTime(date);
+        LocalDateTime startOfDay = localDateTime.with(LocalTime.MIN);
+        return localDateTimeToDate(startOfDay);
+    }
+
+    private static Date localDateTimeToDate(LocalDateTime startOfDay) {
+        return Date.from(startOfDay.atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    private static LocalDateTime dateToLocalDateTime(Date date) {
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(date.getTime()), ZoneId.systemDefault());
     }
 
     //Getting difference in "2 Year 3 Month 12 Days" format between two string rawDate
@@ -401,7 +425,7 @@ public class DateUtil {
         calendar.set(Calendar.DAY_OF_MONTH, 2);  //2
         calendar.add(Calendar.DATE, -1);
 
-        return calendar.getTime();
+        return getStartOfDay(calendar.getTime());
     }
 
 
@@ -414,7 +438,7 @@ public class DateUtil {
         calendar.set(Calendar.DAY_OF_MONTH, 1);  //1
         calendar.add(Calendar.DATE, -1);
 
-        return calendar.getTime();
+        return getEndOfDay(calendar.getTime());
     }
 
     public static String getNameOfCurrentMonth() {
@@ -458,19 +482,19 @@ public class DateUtil {
 
 
     public static Date getFirstDayOfCurrentYear() {
-        return toDate((getCurrentYear() + "-01-01"));
+        return getStartOfDay(toDate("01/01/" + getCurrentYear(), "dd/MM/yyyy"));
     }
 
     public static Date getLastDayOfCurrentYear() {
-        return toDate((getCurrentYear() + "-12-31"));
+        return getEndOfDay(toDate("31/12/" + getCurrentYear(), "dd/MM/yyyy"));
     }
 
     public static Date getFirstDayOfYear(Date anyDate) {
-        return toDate((getYear(anyDate) + "-01-01"));
+        return getStartOfDay(toDate("01/01/" + getYear(anyDate), "dd/MM/yyyy"));
     }
 
     public static Date getLastDayOfYear(Date anyDate) {
-        return toDate((getYear(anyDate) + "-12-31"));
+        return getEndOfDay(toDate("31/12/" +getYear(anyDate), "dd/MM/yyyy"));
     }
 
    /* public static int getCurrentMonthPosition() {
