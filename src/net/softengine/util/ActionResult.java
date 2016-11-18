@@ -1,6 +1,8 @@
 package net.softengine.util;
 
-import java.awt.print.Book;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class ActionResult {
     private boolean success;
@@ -10,6 +12,20 @@ public class ActionResult {
     private Object dataObject;
 
     private Exception exception;
+
+    private Map<String, Object> map = new HashMap<>();
+
+    public boolean hasMapValue() {
+        return map != null && map.size() > 0;
+    }
+
+    public void put(String key, Object value) {
+        map.put(key, value);
+    }
+
+    public Object get(String key) {
+        return map.get(key);
+    }
 
     public Object getDataObject() {
         return this.dataObject;
@@ -43,5 +59,21 @@ public class ActionResult {
 
     public ActionResult(Boolean bool) {
         this.success = bool;
+    }
+
+    public Exception getException() {
+        return exception;
+    }
+
+    public void setException(Exception exception) {
+        this.exception = exception;
+    }
+
+    public Map<String, Object> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, Object> map) {
+        this.map = map;
     }
 }
