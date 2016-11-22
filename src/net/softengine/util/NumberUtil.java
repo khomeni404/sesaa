@@ -87,8 +87,6 @@ public class NumberUtil {
             " nineteen"
     };
 
-    private NumberUtil() {}
-
     private static String convertLessThanOneThousand(int number) {
         String soFar;
 
