@@ -32,30 +32,10 @@ public class User implements Serializable {
     private boolean active;
     @Column(name = "u_name")
     private String name;
-    @Column(name = "u_cell")
-    private String cellPhone;
-    @Column(name = "u_phone")
-    private String altPhone;
-    @Column(name = "u_email")
-    private String emailAddress;
-    @Column(name = "u_madd")
-    private String mailingAddress;
 
-    @Column(name = "u_fname")
-    private String fatherName;
+    @OneToOne(mappedBy = "user")
+    private UserDetails details;
 
-    @Column(name = "u_mname")
-    private String motherName;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "u_dob")
-    private Date dob;
-
-    @Column(name = "u_bg")
-    private Character bloodGroup;
-
-    @Column(name = "u_rh")
-    private Character rhesusFactor;
 
     // This could be replace by UserType class
     @Column(name = "u_type")
@@ -118,13 +98,6 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getFatherName() {
-        return fatherName;
-    }
-
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
-    }
 
     public Long getId() {
         return id;
@@ -158,6 +131,14 @@ public class User implements Serializable {
         this.docList = docList;
     }
 
+    public UserDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(UserDetails details) {
+        this.details = details;
+    }
+
     public Token getToken() {
         return token;
     }
@@ -172,66 +153,6 @@ public class User implements Serializable {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public String getCellPhone() {
-        return cellPhone;
-    }
-
-    public void setCellPhone(String cellPhone) {
-        this.cellPhone = cellPhone;
-    }
-
-    public String getMotherName() {
-        return motherName;
-    }
-
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public Character getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(Character bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
-
-    public Character getRhesusFactor() {
-        return rhesusFactor;
-    }
-
-    public void setRhesusFactor(Character rhesusFactor) {
-        this.rhesusFactor = rhesusFactor;
-    }
-
-    public String getAltPhone() {
-        return altPhone;
-    }
-
-    public void setAltPhone(String altPhone) {
-        this.altPhone = altPhone;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public String getMailingAddress() {
-        return mailingAddress;
     }
 
     public PresentAddress getPresentAddress() {
@@ -256,10 +177,6 @@ public class User implements Serializable {
 
     public void setOfficeAddress(OfficeAddress officeAddress) {
         this.officeAddress = officeAddress;
-    }
-
-    public void setMailingAddress(String mailingAddress) {
-        this.mailingAddress = mailingAddress;
     }
 
     public List<Group> getGroupList() {

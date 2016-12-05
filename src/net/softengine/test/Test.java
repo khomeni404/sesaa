@@ -49,15 +49,15 @@ public class Test {
                 .collect(Collectors.toList());
     }
     public static void main2(String[] args) {
-        Date d1 = DateUtil.toDate("2007-04-20");
-        Date d2 = DateUtil.toDate("2007-05-04");
+//        Date d1 = DateUtil.toDate("2007-04-20");
+//        Date d2 = DateUtil.toDate("2007-05-04");
 
-        Integer days = DateUtil.getDayDifference(d1, d2);
+        //Integer days = DateUtil.getDayDifference(d1, d2);
 //        Integer days2 = DateUtil.daysBetween(d1, d2);
-        Integer month = DateUtil.getMonthDifference(d1, d2);
-        Integer year = DateUtil.getYearDifference(d1, d2);
-        System.out.println("days = " + days);
-        System.out.println("month = " + month);
-        System.out.println("year = " + year);
+        //Integer month = DateUtil.getMonthDifference(d1, d2);
+        //Integer year = DateUtil.getYearDifference(d1, d2);
+        //System.out.println("days = " + days);
+        //System.out.println("month = " + month);
+        //System.out.println("year = " + year);
     }
 }
