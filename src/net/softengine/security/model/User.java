@@ -36,10 +36,15 @@ public class User implements Serializable {
     @OneToOne(mappedBy = "user")
     private UserDetails details;
 
+    @OneToOne(mappedBy = "holder")
+    private PresentAddress presentAddress;
 
-    // This could be replace by UserType class
-    @Column(name = "u_type")
-    private String userType;
+    @OneToOne(mappedBy = "holder")
+    private PermanentAddress permanentAddress;
+
+    @OneToOne(mappedBy = "holder")
+    private OfficeAddress officeAddress;
+
 
     @OneToOne(mappedBy = "owner")
     private Signature signature;
@@ -51,6 +56,9 @@ public class User implements Serializable {
     @Fetch(FetchMode.SELECT)
     private List<Document> docList = new ArrayList<>(0);  // mok
 
+    // This could be replace by UserType class
+    @Column(name = "u_type")
+    private Integer userType;
 
     @ManyToOne
     @JoinColumn(name = "u_dmid")
@@ -66,27 +74,17 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "group_id", referencedColumnName = "id")})
     private List<Group> groupList = new ArrayList<Group>(0);
 
-
-    @OneToOne(mappedBy = "holder")
-    private PresentAddress presentAddress;
-
-    @OneToOne(mappedBy = "holder")
-    private PermanentAddress permanentAddress;
-
-    @OneToOne(mappedBy = "holder")
-    private OfficeAddress officeAddress;
-
     @Transient
     public String getDiscriminatorValue(){
         DiscriminatorValue val = this.getClass().getAnnotation( DiscriminatorValue.class );
         return val == null ? this.getClass().getSimpleName() : val.value();
     }
 
-    public String getUserType() {
+    public Integer getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(Integer userType) {
         this.userType = userType;
     }
 
@@ -107,29 +105,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public Document getSignature() {
-        return signature;
-    }
-
-    public void setSignature(Signature signature) {
-        this.signature = signature;
-    }
-
-    public Avatar getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(Avatar avatar) {
-        this.avatar = avatar;
-    }
-
-    public List<Document> getDocList() {
-        return docList;
-    }
-
-    public void setDocList(List<Document> docList) {
-        this.docList = docList;
-    }
 
     public UserDetails getDetails() {
         return details;
@@ -153,30 +128,6 @@ public class User implements Serializable {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public PresentAddress getPresentAddress() {
-        return presentAddress;
-    }
-
-    public void setPresentAddress(PresentAddress presentAddress) {
-        this.presentAddress = presentAddress;
-    }
-
-    public PermanentAddress getPermanentAddress() {
-        return permanentAddress;
-    }
-
-    public void setPermanentAddress(PermanentAddress permanentAddress) {
-        this.permanentAddress = permanentAddress;
-    }
-
-    public OfficeAddress getOfficeAddress() {
-        return officeAddress;
-    }
-
-    public void setOfficeAddress(OfficeAddress officeAddress) {
-        this.officeAddress = officeAddress;
     }
 
     public List<Group> getGroupList() {
@@ -205,5 +156,53 @@ public class User implements Serializable {
 
     public void setDefaultModule(Module defaultModule) {
         this.defaultModule = defaultModule;
+    }
+
+    public PresentAddress getPresentAddress() {
+        return presentAddress;
+    }
+
+    public void setPresentAddress(PresentAddress presentAddress) {
+        this.presentAddress = presentAddress;
+    }
+
+    public PermanentAddress getPermanentAddress() {
+        return permanentAddress;
+    }
+
+    public void setPermanentAddress(PermanentAddress permanentAddress) {
+        this.permanentAddress = permanentAddress;
+    }
+
+    public OfficeAddress getOfficeAddress() {
+        return officeAddress;
+    }
+
+    public void setOfficeAddress(OfficeAddress officeAddress) {
+        this.officeAddress = officeAddress;
+    }
+
+    public Signature getSignature() {
+        return signature;
+    }
+
+    public void setSignature(Signature signature) {
+        this.signature = signature;
+    }
+
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
+
+    public List<Document> getDocList() {
+        return docList;
+    }
+
+    public void setDocList(List<Document> docList) {
+        this.docList = docList;
     }
 }

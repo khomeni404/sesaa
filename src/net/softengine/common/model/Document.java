@@ -98,14 +98,6 @@ public class Document implements Serializable {
         this.resourceDirectory = resourceDirectory;
     }
 
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
     public Date getRecordDate() {
         return recordDate;
     }
@@ -114,5 +106,11 @@ public class Document implements Serializable {
         this.recordDate = recordDate;
     }
 
+    public User getOwner() {
+        return owner;
+    }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 }

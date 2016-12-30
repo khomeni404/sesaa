@@ -2,9 +2,13 @@ package net.softengine.common.model;
 
 
 import net.softengine.security.model.User;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Khomeni on 28-Nov-16.
@@ -23,6 +27,7 @@ public class UserDetails {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
 
     @Column(name = "cell")
     private String cellPhone;
@@ -136,4 +141,5 @@ public class UserDetails {
     public void setRhesusFactor(Character rhesusFactor) {
         this.rhesusFactor = rhesusFactor;
     }
+
 }
