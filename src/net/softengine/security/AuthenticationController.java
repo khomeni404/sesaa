@@ -2,10 +2,8 @@ package net.softengine.security;
 
 import net.softengine.constant.SecurityConstants;
 import net.softengine.security.model.User;
-import net.softengine.security.service.AuthenticationAndAuthorizationService;
-import net.softengine.security.service.BootStrap;
+import net.softengine.security.service.SESAAService;
 import net.softengine.security.service.SecurityService;
-import net.softengine.util.ActionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,25 +12,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
+/**
+ * Copyright @ Soft Engine Inc.
+ * Created on 22/05/2016
+ * Created By : Khomeni
+ * Version : 1.0
+ */
 
 @Controller
-@RequestMapping(name = "security", value = "/auth/")
+@RequestMapping(name = "security", value = "/auth/", method = {RequestMethod.GET, RequestMethod.HEAD})
 public class AuthenticationController {
 
-    private HttpSession userSession;
-
     @Autowired
-    private AuthenticationAndAuthorizationService authService;
+    private SESAAService authService;
 
     @Autowired
     public SecurityService securityService;
 
-    @Autowired
-    private BootStrap bootStrap;
-
-    @RequestMapping(method = RequestMethod.GET, value = "/login.se")
+    @RequestMapping(method = RequestMethod.HEAD, value = "/login.se")
     public ModelAndView login() throws Exception {
         //bootStrap.createDefaultAdmin();
         return new ModelAndView("home/login");
@@ -55,7 +53,7 @@ public class AuthenticationController {
     public ModelAndView logout() {
         User user = SessionUtil.getSessionUser();
         securityService.saveLoginLog(user, false);
-        userSession = SessionUtil.getSession();
+        HttpSession userSession = SessionUtil.getSession();
         userSession.removeAttribute(SecurityConstants.SESSION_USER);
         userSession.removeAttribute(SecurityConstants.SESSION_USER_GRANTED_OPERATIONS);
         userSession.removeAttribute(SecurityConstants.SESSION_USER_ID);

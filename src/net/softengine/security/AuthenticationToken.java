@@ -4,7 +4,12 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-
+/**
+ * Copyright @ Soft Engine Inc.
+ * Created on 22/05/2016
+ * Created By : Khomeni
+ * Version : 1.0
+ */
 public class AuthenticationToken extends AbstractAuthenticationToken{
 	
 	String username;

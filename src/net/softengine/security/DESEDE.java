@@ -6,8 +6,10 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
 
 /**
- *
- * @author ronnie
+ * Copyright @ Soft Engine Inc.
+ * Created on 22/05/2016
+ * Created By : Khomeni
+ * Version : 1.0
  */
 public class DESEDE {
     
@@ -17,7 +19,7 @@ public class DESEDE {
   /**
     * Pad a string with spaces on the right.
     *
-    * @param str String to add spaces
+    * @param string String to add spaces
     * @param width Width of string after padding
     */
     public static String pad (String string, int width) {

@@ -8,7 +8,7 @@ import net.softengine.security.model.Attempt;
 import net.softengine.security.model.Module;
 import net.softengine.security.model.Operation;
 import net.softengine.security.model.User;
-import net.softengine.security.service.AuthenticationAndAuthorizationService;
+import net.softengine.security.service.SESAAService;
 import net.softengine.security.service.SecurityService;
 import net.softengine.util.ActionResult;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -44,7 +44,7 @@ public class AuthorizationAspect {
     }*/
 
     @Autowired
-    private AuthenticationAndAuthorizationService authorizationService;
+    private SESAAService authorizationService;
 
     private User sessionUser = null;
 

@@ -19,7 +19,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Copyright @ Soft Engine Inc.
+ * Created on 22/05/2016
+ * Created By : Khomeni
+ * Version : 1.0
+ */
 @Controller
 @RequestMapping("/security/")
 public class SecurityController {

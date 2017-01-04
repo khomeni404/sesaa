@@ -7,7 +7,7 @@ import net.softengine.security.model.Group;
 import net.softengine.security.model.Operation;
 import net.softengine.security.model.User;
 
-public interface AuthenticationAndAuthorizationService {
+public interface SESAAService {
 	
 	public boolean authenticate(String username, String password);
 

@@ -15,8 +15,8 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class AuthenticationAndAuthorizationServiceImpl implements
-        AuthenticationAndAuthorizationService {
+public class SESAAServiceImpl implements
+        SESAAService {
 
     @Autowired
     private UserDao userDao;
