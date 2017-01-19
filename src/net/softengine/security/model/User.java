@@ -57,6 +57,9 @@ public class User implements Serializable {
     private List<Document> docList = new ArrayList<>(0);  // mok
 
     // This could be replace by UserType class
+    @Column(name = "u_id")
+    private Integer userId;
+
     @Column(name = "u_type")
     private Integer userType;
 
@@ -180,6 +183,14 @@ public class User implements Serializable {
 
     public void setOfficeAddress(OfficeAddress officeAddress) {
         this.officeAddress = officeAddress;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Signature getSignature() {
