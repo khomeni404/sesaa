@@ -58,10 +58,10 @@ public class User implements Serializable {
 
     // This could be replace by UserType class
     @Column(name = "u_id")
-    private Integer userId;
+    private Integer uid;
 
     @Column(name = "u_type")
-    private Integer userType;
+    private Integer type;
 
     @ManyToOne
     @JoinColumn(name = "u_dmid")
@@ -83,13 +83,6 @@ public class User implements Serializable {
         return val == null ? this.getClass().getSimpleName() : val.value();
     }
 
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
-    }
 
     public String getName() {
         return name;
@@ -185,12 +178,20 @@ public class User implements Serializable {
         this.officeAddress = officeAddress;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Signature getSignature() {
