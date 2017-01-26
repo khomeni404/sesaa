@@ -49,7 +49,7 @@ public class UserDetails {
     private Date dob;
 
     @Column(name = "blood_group")
-    private Character bloodGroup;
+    private String bloodGroup;
 
     @Column(name = "rh_factor")
     private Character rhesusFactor;
@@ -126,11 +126,11 @@ public class UserDetails {
         this.dob = dob;
     }
 
-    public Character getBloodGroup() {
+    public String getBloodGroup() {
         return bloodGroup;
     }
 
-    public void setBloodGroup(Character bloodGroup) {
+    public void setBloodGroup(String bloodGroup) {
         this.bloodGroup = bloodGroup;
     }
 
