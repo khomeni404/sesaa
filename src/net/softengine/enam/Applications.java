@@ -9,7 +9,7 @@ import net.softengine.util.DateUtil;
 import java.util.Date;
 
 /**
- * @author MAK
+ * @author Khomeni
  */
 public enum Applications {
 
@@ -17,7 +17,7 @@ public enum Applications {
     ePDM_BRTC_BUET(12, "ePDM", "", "", "30-01-2017", "Bureau of Research, Testing & Consultation", ""),
     eVISION_FVPL(13, "eVision", "", "", "28-12-2020", "Fair Vision Property & Society Ltd.", ""),
     CHAMBER(14, "CHAMBER", "", "", "28-12-2016", "", "Simple Chamber Management System"),
-    eSHOP(15, "eShop", "", "", "28-12-2016", "", "Simple ERP System"),
+    eSHOP(15, "eShop", "", "", "28-12-2017", "", "Simple ERP System"),
     QRF(16, "QRF", "", "", "28-12-2016", "", "ERP System for Quran Research Foundation.");
 
     public final Integer CODE;
