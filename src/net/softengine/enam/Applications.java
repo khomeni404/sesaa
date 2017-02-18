@@ -20,21 +20,21 @@ public enum Applications {
     eSHOP(15, "eShop", "", "", "28-12-2017", "", "Simple ERP System"),
     QRF(16, "QRF", "", "", "28-12-2016", "", "ERP System for Quran Research Foundation.");
 
-    public final Integer CODE;
-    public final String NAME;
-    public final String R_DATE;
-    public final String R_NOTE;
-    public final String V_DATE;
-    public final String STAKE_HOLDER;
-    public final String DESCRIPTION;
+    public final Integer CODE;          // Application Code
+    public final String NAME;           // Application Name
+    public final String R_DATE;         // Release Date
+    public final String R_NOTE;         // Release Note
+    public final String V_DATE;         // Valid Date
+    public final String STAKE_HOLDER;   // Stakeholder
+    public final String DESCRIPTION;    // Description
 
     Applications(Integer code, String name, String rDate, String rNote, String vDate, String sHolder, String description) {
-        CODE = code; // Application Code
-        NAME = name; // Application Name
-        R_DATE = rDate; //Release Date
-        R_NOTE = rNote; // Release Note
-        V_DATE = vDate; // Valid Date
-        STAKE_HOLDER = sHolder; // Stakeholder
+        CODE = code;
+        NAME = name;
+        R_DATE = rDate;
+        R_NOTE = rNote;
+        V_DATE = vDate;
+        STAKE_HOLDER = sHolder;
         DESCRIPTION = description;
     }
 
@@ -49,6 +49,6 @@ public enum Applications {
      * @return Date date
      */
     public static Date getExpiryDate(Applications APP) {
-        return DateUtil.toDate(APP.V_DATE, "DD-MM-YYYY");
+        return DateUtil.toDate(APP.V_DATE, "dd-MM-yyyy");
     }
 }

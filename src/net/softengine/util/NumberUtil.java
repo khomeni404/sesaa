@@ -14,36 +14,40 @@ import java.text.DecimalFormat;
  */
 
 public class NumberUtil {
-    public static String toCommaFormateTaka(Object takaPaisaObj) {
-        //BigDecimal.valueOf(qty*amount).toPlainString()
-        String takaPaisa = String.valueOf(takaPaisaObj);
-        if (takaPaisa == null) return "";
-        boolean hasPaisa = takaPaisa.split("\\.").length > 1;
-        String taka = takaPaisa.split("\\.")[0];
-        String paisa = "";
-        if (hasPaisa) {
-            paisa = takaPaisa.split("\\.")[1];
-            paisa = SEUtil.cutOrPadRight(paisa, 2, "0");
-        }
-        int len = taka.length();
-        if (len <= 3) {
-            return taka + "." + paisa;
-        } else {
-            String sotok = taka.substring(len - 3);
-            String result = "";
-            String rest = taka.substring(0, len - 3);
-            for (int i = 0; i <= rest.length(); i++) {
-                if (rest.length() % 2 == 0) {
-                    result += rest.substring(0, 2);
-                    rest = rest.substring(2);
-                } else {
-                    result += rest.substring(0, 1);
-                    rest = rest.substring(1);
+
+    public static void main(String[] args) {
+        System.out.println(toCommaFormattedTaka(1.2653));
+    }
+    public static String toCommaFormattedTaka(Object takaPaisaObj) {
+        if(takaPaisaObj == null ) return "";
+        if (takaPaisaObj instanceof Double || takaPaisaObj instanceof Integer) {
+            DecimalFormat df = new DecimalFormat("#0.00");
+            String takaPaisa = df.format(takaPaisaObj);
+            String taka = takaPaisa.split("\\.")[0];
+            String paisa = takaPaisa.split("\\.")[1];
+
+            int len = taka.length();
+            if (len <= 3) {
+                return taka + "." + paisa;
+            } else {
+                String sotok = taka.substring(len - 3);
+                String result = "";
+                String rest = taka.substring(0, len - 3);
+                for (int i = 0; i <= rest.length(); i++) {
+                    if (rest.length() % 2 == 0) {
+                        result += rest.substring(0, 2);
+                        rest = rest.substring(2);
+                    } else {
+                        result += rest.substring(0, 1);
+                        rest = rest.substring(1);
+                    }
+                    result += ",";
                 }
-                result += ",";
+                //System.out.println(result);
+                return result + sotok + "." + paisa;
             }
-            //System.out.println(result);
-            return result + sotok + "." + paisa;
+        } else {
+            return "";
         }
     }
 
@@ -207,7 +211,7 @@ public class NumberUtil {
      * testing
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
       /*  System.out.println("*** " + EnglishNumberToWords.convert(0));
         System.out.println("*** " + EnglishNumberToWords.convert(1));
         System.out.println("*** " + EnglishNumberToWords.convert(16));

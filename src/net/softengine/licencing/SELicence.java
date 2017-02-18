@@ -33,16 +33,6 @@ public class SELicence {
         return res;
     }
 
-    public static boolean isValid(Applications app) {
-        Date limitDate = DateUtil.toDate(app.V_DATE, "DD-MM-YYYY");
-        Date today = new Date();
-        if (today.compareTo(limitDate) > 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
 
 
     public static ActionResult checkProjectsRange() {
