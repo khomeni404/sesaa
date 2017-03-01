@@ -1,7 +1,5 @@
 package net.softengine.util;
 
-import org.apache.commons.lang3.math.NumberUtils;
-
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
@@ -22,7 +20,7 @@ public class NumberUtil {
     }
     public static String toCommaFormattedTaka(Object takaPaisaObj) {
         if(takaPaisaObj == null ) return "";
-        if (takaPaisaObj instanceof Double || takaPaisaObj instanceof Integer || NumberUtils.isDigits(takaPaisaObj.toString())) {
+        if (takaPaisaObj instanceof Double || takaPaisaObj instanceof Integer  || NumberUtils.isDigits(takaPaisaObj.toString())) {
             DecimalFormat df = new DecimalFormat("#0.00");
             String takaPaisa = df.format(takaPaisaObj);
             String taka = takaPaisa.split("\\.")[0];
