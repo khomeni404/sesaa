@@ -70,6 +70,14 @@ public class User implements Serializable {
     @Transient
     private Date lastActivity;
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "u_ed")
+    private Date entryDate;
+
+    @ManyToOne
+    @JoinColumn(name = "u_opid")
+    private User operator;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SELECT)
     @JoinTable(name = "SEC_zt_user_group",
@@ -144,6 +152,22 @@ public class User implements Serializable {
 
     public void setLastActivity(Date lastActivity) {
         this.lastActivity = lastActivity;
+    }
+
+    public Date getEntryDate() {
+        return entryDate;
+    }
+
+    public void setEntryDate(Date entryDate) {
+        this.entryDate = entryDate;
+    }
+
+    public User getOperator() {
+        return operator;
+    }
+
+    public void setOperator(User operator) {
+        this.operator = operator;
     }
 
     public Module getDefaultModule() {

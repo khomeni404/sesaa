@@ -554,15 +554,14 @@ public class DateUtil {
      */
     public static Date getFirstDateByMMYY(String mmYY) {
         String date = "20" + mmYY.substring(2) + "-" + mmYY.substring(0, 2) + "-01";
-        return toDate(date);
+        return getEndOfDay(toDate(date, "yyyy-MM-dd"));
     }
 
     public static Date getLastDateByMMYY(String mmYY) throws NumberFormatException {
         int[] days = {31, ((Integer.parseInt(mmYY.substring(2)) % 4 == 0) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         String date = "20" + mmYY.substring(2) + "-"
                 + mmYY.substring(0, 2) + "-" + days[Integer.parseInt(mmYY.substring(0, 2)) - 1];
-
-        return toDate(date);
+        return getEndOfDay(toDate(date, "yyyy-MM-dd"));
     }
 
     public static Date[] getFirstLastDate(String mmYY) {
