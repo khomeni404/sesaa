@@ -1,5 +1,7 @@
 package net.softengine.util;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 

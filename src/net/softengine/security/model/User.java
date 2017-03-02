@@ -52,7 +52,7 @@ public class User implements Serializable {
     @OneToOne(mappedBy = "owner")
     private Avatar avatar;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
     @Fetch(FetchMode.SELECT)
     private List<Document> docList = new ArrayList<>(0);  // mok
 
@@ -78,7 +78,7 @@ public class User implements Serializable {
     @JoinColumn(name = "u_opid")
     private User operator;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SELECT)
     @JoinTable(name = "SEC_zt_user_group",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},

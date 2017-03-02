@@ -20,11 +20,11 @@ public class Module implements Serializable {
     private String alias;
     private String description;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "defaultModule")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "defaultModule")
     @Fetch(value = FetchMode.SELECT)
     private List<User> defaultUserList = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "module")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "module")
     @Fetch(value = FetchMode.SELECT)
     private List<Operation> operationList = new ArrayList<>();
 
