@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import net.softengine.security.dao.SecurityDAO;
 import net.softengine.security.model.Authority;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +14,7 @@ import net.softengine.security.model.Operation;
 import net.softengine.security.model.User;
 import net.softengine.security.service.UserDetailsService;
 import net.softengine.constant.SecurityConstants;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -26,11 +28,14 @@ import net.softengine.constant.SecurityConstants;
  * operations and authorized features and store them into session attributes.
  *
  */
+//@Component
 public class AuthorizationToken {
 	
-	@Autowired
+	/*@Autowired
 	private UserDetailsService userDetailsService;
-	
+    @Autowired
+    private SecurityDAO securityDAO;
+	*/
 	public User principal;
 	public List<Authority> credentials;
 	public List<Group> authorizedGroups;
@@ -58,15 +63,15 @@ public class AuthorizationToken {
 			session.setAttribute(SecurityConstants.SESSION_USER_ID, principal.getId());
 			session.setAttribute(SecurityConstants.SESSION_USER_DV, principal.getDiscriminatorValue());
 
-			authorizedGroups = principal.getGroupList();
+			authorizedGroups =  principal.getGroupList();
 
 			grantedOperations = new ArrayList<Operation>();
 			
 			if(authorizedGroups != null){
 				for(Group authorizedGroup : authorizedGroups){
-					credentials = authorizedGroup.getAuthorityList();
+					credentials =  authorizedGroup.getAuthorityList();
 					for(Authority authority : credentials){
-                        List<Operation> operations = authority.getOperationList();
+                        List<Operation> operations =  authority.getOperationList();
 						grantedOperations.addAll(operations);
 					}
 				}

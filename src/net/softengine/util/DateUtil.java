@@ -32,43 +32,6 @@ public class DateUtil {
         System.out.println("void and print");
     }
 
-    public static void main(String[] args) {
-
-
-        Date someDate = getFirstDateByMMYY("1115");
-
-        Date dayAfter = new Date(someDate.getTime() - TimeUnit.DAYS.toMillis(1));
-        System.out.println(DateUtil.getCurrentMonthOfYear());
-
-        System.out.println(getLastDateByMMYY("1115"));
-
-        Date from = DateUtil.getFirstDayOfMonth();
-        System.out.println("from = " + from);
-        Date to = DateUtil.getLastDayOfMonth();
-        System.out.println("to = " + to);
-        //System.out.println(toDate("12/08/2015", "DD/MM/YYYY"));
-         /*System.out.println(td.getCurrentYear()+td.getCurrentMonthSerial());
-        System.out.println("20"+s.substring(2)+s.substring(0,2));*/
-       /*
-       map.put("forTheMonthOf", "January");// td.getNameOfCurrentMonth());
-        map.put("totalDaysOfMonth", 30);// td.getTotalDaysOfCurrentMonth());
-        map.put("pastDays", td.getPastDaysOfCurrentDate());
-
-
-       System.out.println("Test"+td.getLastDateByMMYY("0215"));
-        System.out.println("---------------AGE Calculation---------------");
-        System.out.println("getAgeInYear('1985-05-01') = " + td.getAgeInYear("1985-05-01"));
-        System.out.println("getAge('1985-05-01') = " + td.getAge("1985-05-01"));
-        System.out.println("---------------Other Methods---------------");
-        System.out.println("countDayBtn2Date('2014-12-23', '2014-02-26') = " + td.countDayBtn2Date("2014-12-23", "2014-02-26"));
-        System.out.println("getFirstDayOfMonth() = " + td.getFirstDayOfMonth());
-        System.out.println("getLastDayOfMonth() = " + td.getLastDayOfMonth());
-        System.out.println("getToday() = " + td.getToday());
-        System.out.println("getSmartToday() = " + td.getTodaySmart());
-        System.out.println("getDateOfTheDay(5) = " + td.getDateOfTheDay(5));
-        System.out.println("getDateAfterDay(25) = " + td.getDateAfterDay(25));
-        System.out.println("To Date () : " + td.toDate("2014-2-04"));*/
-    }
 
     public static Date toDate(String rawDate, String pattern) {
         try {
@@ -162,10 +125,11 @@ public class DateUtil {
 
     //Getting age in "2 Year 3 Month 12 Days" format from string birth rawDate
     public static String getAge(Date birthDate) {
-        if(birthDate == null) return "No Birth Day found!";
+        if (birthDate == null) return "No Birth Day found!";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return getAge(sdf.format(birthDate));
     }
+
     public static String getAge(String birthString, String format) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -494,7 +458,7 @@ public class DateUtil {
     }
 
     public static Date getLastDayOfYear(Date anyDate) {
-        return getEndOfDay(toDate("31/12/" +getYear(anyDate), "dd/MM/yyyy"));
+        return getEndOfDay(toDate("31/12/" + getYear(anyDate), "dd/MM/yyyy"));
     }
 
    /* public static int getCurrentMonthPosition() {
@@ -549,19 +513,59 @@ public class DateUtil {
     }
 
     /**
-     * @param mmYY
-     * @return
+     * @see net.softengine.util.DateUtil#getFirstDateBy_yyyyMM(String)
+     * @deprecated
      */
     public static Date getFirstDateByMMYY(String mmYY) {
         String date = "20" + mmYY.substring(2) + "-" + mmYY.substring(0, 2) + "-01";
-        return getEndOfDay(toDate(date, "yyyy-MM-dd"));
+        return getStartOfDay(toDate(date, "yyyy-MM-dd"));
     }
 
+
+    public static Date getFirstDateBy_yyyyMM(String yyyyMM) {
+        String date = "01/" + yyyyMM.substring(4) + "/" + yyyyMM.substring(0, 4);
+        return getStartOfDay(toDate(date, "dd/MM/yyyy"));
+    }
+
+    public static Date getFirstDateByDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+        String yyyyMM = sdf.format(date);
+        String date2 = "01/" + yyyyMM.substring(4) + "/" + yyyyMM.substring(0, 4);
+        return getStartOfDay(toDate(date2, "dd/MM/yyyy"));
+    }
+
+    /**
+     * @param mmYY
+     * @return
+     * @throws NumberFormatException
+     * @see net.softengine.util.DateUtil#
+     * @deprecated
+     */
     public static Date getLastDateByMMYY(String mmYY) throws NumberFormatException {
         int[] days = {31, ((Integer.parseInt(mmYY.substring(2)) % 4 == 0) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         String date = "20" + mmYY.substring(2) + "-"
                 + mmYY.substring(0, 2) + "-" + days[Integer.parseInt(mmYY.substring(0, 2)) - 1];
         return getEndOfDay(toDate(date, "yyyy-MM-dd"));
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getFirstDateByDate(new Date()));
+    }
+    public static Date getLastDateBy_yyyyMM(String yyyyMM) throws NumberFormatException {
+        String month = yyyyMM.substring(4);
+        String year= yyyyMM.substring(0, 4);
+        int[] days = {31, ((Integer.parseInt(year) % 4 == 0) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        String date = days[Integer.parseInt(month) - 1]+"/"+month+"/"+year;
+        return getEndOfDay(toDate(date, "dd/MM/yyyy"));
+    }
+
+    public static Date getLastDateBy_Date(Date anyDate) throws NumberFormatException {
+        String yyyyMM = new SimpleDateFormat("yyyyMM").format(anyDate);
+        String month = yyyyMM.substring(4);
+        String year = yyyyMM.substring(0, 4);
+        int[] days = {31, ((Integer.parseInt(year) % 4 == 0) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        String date = days[Integer.parseInt(month) - 1] + "/" + month + "/" + year;
+        return getEndOfDay(toDate(date, "dd/MM/yyyy"));
     }
 
     public static Date[] getFirstLastDate(String mmYY) {

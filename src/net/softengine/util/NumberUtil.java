@@ -22,7 +22,7 @@ public class NumberUtil {
     }
     public static String toCommaFormattedTaka(Object takaPaisaObj) {
         if(takaPaisaObj == null ) return "";
-        if (takaPaisaObj instanceof Double || takaPaisaObj instanceof Integer  || NumberUtils.isDigits(takaPaisaObj.toString())) {
+        if (takaPaisaObj instanceof Double || takaPaisaObj instanceof Integer  || NumberUtils.isNumber(takaPaisaObj.toString())) {
             DecimalFormat df = new DecimalFormat("#0.00");
             String takaPaisa = df.format(takaPaisaObj);
             String taka = takaPaisa.split("\\.")[0];
