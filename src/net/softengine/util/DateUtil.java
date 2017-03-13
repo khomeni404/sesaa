@@ -549,7 +549,7 @@ public class DateUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(getFirstDateByDate(new Date()));
+        System.out.println("201705".substring(2,4));
     }
     public static Date getLastDateBy_yyyyMM(String yyyyMM) throws NumberFormatException {
         String month = yyyyMM.substring(4);

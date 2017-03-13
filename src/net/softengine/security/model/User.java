@@ -33,6 +33,9 @@ public class User implements Serializable {
     @Column(name = "u_name")
     private String name;
 
+    @Column(name = "u_n_name")
+    private String nickName;
+
     @OneToOne(mappedBy = "user")
     private UserDetails details;
 
@@ -240,5 +243,13 @@ public class User implements Serializable {
 
     public void setDocList(List<Document> docList) {
         this.docList = docList;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }
