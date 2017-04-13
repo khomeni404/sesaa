@@ -24,7 +24,7 @@ public class Module implements Serializable {
     @Fetch(value = FetchMode.SELECT)
     private List<User> defaultUserList = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "module")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "module")
     @Fetch(value = FetchMode.SELECT)
     private List<Operation> operationList = new ArrayList<>();
 

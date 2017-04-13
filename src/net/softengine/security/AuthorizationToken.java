@@ -61,6 +61,7 @@ public class AuthorizationToken {
 
 			session.setAttribute(SecurityConstants.SESSION_USER, principal);
 			session.setAttribute(SecurityConstants.SESSION_USER_ID, principal.getId());
+			session.setAttribute(SecurityConstants.SESSION_USER_USERNAME, principal.getToken().getUsername());
 			session.setAttribute(SecurityConstants.SESSION_USER_DV, principal.getDiscriminatorValue());
 
 			authorizedGroups =  principal.getGroupList();

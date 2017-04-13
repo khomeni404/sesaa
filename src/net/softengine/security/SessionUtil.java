@@ -58,6 +58,15 @@ public class SessionUtil {
         return null;
     }
 
+    public static String getSessionUsername() {
+
+        Object userId = getSession().getAttribute(SecurityConstants.SESSION_USER_USERNAME);
+        if (userId instanceof String) {
+            return (String) userId;
+        }
+        return null;
+    }
+
     public static String getSessionUserType() {
         Object discriminatorValue = getSession().getAttribute(SecurityConstants.SESSION_USER_DV);
         return discriminatorValue.toString();
