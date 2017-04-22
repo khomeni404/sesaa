@@ -14,6 +14,12 @@ public class ActionResult {
 
     private Map<String, Object> map = new HashMap<>();
 
+    public Map<String, Object> getModelMap() {
+        this.map.put("message", this.msg);
+        this.map.put("success", this.success);
+        return this.map;
+    }
+
     public boolean hasMapValue() {
         return map != null && map.size() > 0;
     }
