@@ -54,6 +54,8 @@ public class UserDetails {
     @Column(name = "rh_factor")
     private Character rhesusFactor;
 
+    private String sex;
+
     public Long getId() {
         return id;
     }
@@ -142,4 +144,11 @@ public class UserDetails {
         this.rhesusFactor = rhesusFactor;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 }

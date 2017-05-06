@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @Controller
-@RequestMapping(name = "security", value = "/auth/", method = {RequestMethod.GET, RequestMethod.HEAD})
+@RequestMapping(name = "security", value = {"/auth/", "/login/"}, method = {RequestMethod.GET, RequestMethod.HEAD})
 public class AuthenticationController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class AuthenticationController {
     @Autowired
     public SecurityService securityService;
 
-    @RequestMapping(method = RequestMethod.HEAD, value = "/login.se")
+    @RequestMapping(method = RequestMethod.HEAD, value = {"/login.se", "/"})
     public ModelAndView login() throws Exception {
         //bootStrap.createDefaultAdmin();
         return new ModelAndView("home/login");
