@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao {
         }
 
         if(token instanceof Token){
-            user = (User) hibernateTemplate.find("from User as user where user.token.id=?",
+            user = (User) hibernateTemplate.find("from User user where user.token.id=?",
                     token.getId()).get(0);
         }
         return user;
@@ -98,7 +98,7 @@ public class UserDaoImpl implements UserDao {
 		paramArr[0] = new String(username);
 		paramArr[1] = desede.encrypt(password);
         try{
-            Token userToken = (Token)hibernateTemplate.find("from Token as token " +
+            Token userToken = (Token)hibernateTemplate.find("from Token token " +
                     " where token.username =? and token.password =? ", paramArr).get(0);
 
             //System.out.println("userToken.getUsername() = " + userToken.getUsername());
@@ -106,7 +106,7 @@ public class UserDaoImpl implements UserDao {
             paramUser[0] = true;
             paramUser[1] = userToken.getId();
 
-            List<User> users = (List<User>) hibernateTemplate.find("from User as user where user.active =? " +
+            List<User> users = (List<User>) hibernateTemplate.find("from User user where user.active =? " +
                     "and user.token.id=?", paramUser);
             System.out.println("users.size() = " + users.size());
             if(users == null || users.size() == 0) {
