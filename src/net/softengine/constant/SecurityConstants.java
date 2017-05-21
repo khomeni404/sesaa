@@ -11,13 +11,13 @@ package net.softengine.constant;
  */
 public class SecurityConstants {
 
-	public static final String SESSION_USER = "session.user";
-	public static final String SESSION_USER_DV = "session.user.discriminator.value";
-	public static final String SESSION_USER_ID = "session.user.id";
-	public static final String SESSION_USER_USERNAME = "session.user.username";
-	public static final String SESSION_USER_AUTHORIZED_GROUPS = "session.user.authorized.groups";
-	public static final String SESSION_USER_AUTHORITIES = "session.user.authorities";
-	public static final String SESSION_USER_GRANTED_OPERATIONS = "session.user.operations";
+	public static final String SESSION_USER = "session_user";
+	public static final String SESSION_USER_DV = "session_user_discriminator_value";
+	public static final String SESSION_USER_ID = "session_user_id";
+	public static final String SESSION_USER_USERNAME = "session_user_username";
+	public static final String SESSION_USER_AUTHORIZED_GROUPS = "session_user_authorized_groups";
+	public static final String SESSION_USER_AUTHORITIES = "session_user_authorities";
+	public static final String SESSION_USER_GRANTED_OPERATIONS = "session_user_operations";
 
     public static final String SESSION_SAVE = "save";
     public static final String DASHBOARD_LINK = "../home.se";

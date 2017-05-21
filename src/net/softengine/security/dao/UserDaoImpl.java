@@ -93,21 +93,20 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
 	@Override
 	public User get(String username, String password){
-		DESEDE desede = new DESEDE(username);
-		Object[] paramArr = new Object[2];
-		paramArr[0] = new String(username);
-		paramArr[1] = desede.encrypt(password);
+		// DESEDE desede = new DESEDE(username);
+		Object[] paramArr = new Object[]{username}; // , desede.encrypt(password)
         try{
-            Token userToken = (Token)hibernateTemplate.find("from Token token " +
-                    " where token.username =? and token.password =? ", paramArr).get(0);
+            Token userToken = (Token) hibernateTemplate.find("from Token t where t.username = ?", paramArr).get(0);
+            if (userToken == null || !userToken.getDecPassword().equals(password)) {
+                return null;
+            }
 
             //System.out.println("userToken.getUsername() = " + userToken.getUsername());
             Object[] paramUser = new Object[2];
             paramUser[0] = true;
             paramUser[1] = userToken.getId();
 
-            List<User> users = (List<User>) hibernateTemplate.find("from User user where user.active =? " +
-                    "and user.token.id=?", paramUser);
+            List<User> users = (List<User>) hibernateTemplate.find("from User user where user.active = ? and user.token.id = ?", paramUser);
             System.out.println("users.size() = " + users.size());
             if(users == null || users.size() == 0) {
                 return null;

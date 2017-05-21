@@ -24,7 +24,7 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/home/")
+@RequestMapping("/home2/")
 public class HomeController {
     @Autowired
     public SecurityService securityService;

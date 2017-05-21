@@ -4,6 +4,7 @@
  */
 package net.softengine.enam;
 
+import net.softengine.security.DESEDE;
 import net.softengine.util.DateUtil;
 
 import java.util.Date;
@@ -18,7 +19,7 @@ public enum Applications {
     eVISION_FVPL(13, "eVision", "", "", "28-12-2020", "Fair Vision Property & Society Ltd.", ""),
     CHAMBER(14, "CHAMBER", "", "", "28-12-2016", "", "Simple Chamber Management System"),
     eSHOP(15, "eShop", "", "", "28-12-2017", "", "Simple ERP System"),
-    QRF(16, "QRF", "", "", "28-12-2016", "", "ERP System for Quran Research Foundation.");
+    QRF(16, "QRF", "", "", "28-12-2017", "", "ERP System for Quran Research Foundation.");
 
     public final Integer CODE;          // Application Code
     public final String NAME;           // Application Name
@@ -39,7 +40,9 @@ public enum Applications {
     }
 
     public static void main(String[] args) {
-        System.out.println(Applications.CHAMBER.DESCRIPTION);
+        System.out.println(new Date().getTime());
+        System.out.println(getExpiryDate(Applications.QRF));
+        System.out.println(new Date().getTime());
     }
 
     /**
@@ -50,5 +53,6 @@ public enum Applications {
      */
     public static Date getExpiryDate(Applications APP) {
         return DateUtil.toDate(APP.V_DATE, "dd-MM-yyyy");
+//        return DateUtil.toDate(new DESEDE(APP.NAME).decrypt(APP.V_DATE), "dd-MM-yyyy");
     }
 }

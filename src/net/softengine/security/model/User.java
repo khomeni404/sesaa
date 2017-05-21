@@ -29,7 +29,7 @@ public class User implements Serializable {
     @JoinColumn(name = "token")
     private Token token;
     @Column(name = "u_act")
-    private boolean active;
+    private Boolean active;
     @Column(name = "u_name")
     private String name;
 
@@ -129,11 +129,11 @@ public class User implements Serializable {
         this.token = token;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

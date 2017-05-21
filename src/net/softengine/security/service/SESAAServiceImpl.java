@@ -29,7 +29,7 @@ public class SESAAServiceImpl implements
         User user = userDao.get(username, password);
 
         if (user instanceof User) {
-            // call authenticationfilter
+
             user.setLastActivity(new Date());
             AuthorizationFilter.setAuthorization(user);
 

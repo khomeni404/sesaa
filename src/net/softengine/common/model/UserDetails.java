@@ -48,12 +48,13 @@ public class UserDetails {
     @Column(name = "dob")
     private Date dob;
 
-    @Column(name = "blood_group")
+    @Column(name = "blood_group", length = 2)
     private String bloodGroup;
 
     @Column(name = "rh_factor")
     private Character rhesusFactor;
 
+    @Column(length = 1)
     private String sex;
 
     public Long getId() {
