@@ -54,6 +54,7 @@ public class ActionResult {
 
     public void setMsg(String msg) {
         this.msg = msg;
+        this.map.put("message", this.msg);
     }
 
 
