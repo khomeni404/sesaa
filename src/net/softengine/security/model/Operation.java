@@ -1,5 +1,8 @@
 package net.softengine.security.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +28,8 @@ public class Operation implements Serializable {
     @JoinColumn(name = "module_id")
     private Module module;
 
-    @ManyToMany(mappedBy = "operationList")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "operationList")
+    @Fetch(value = FetchMode.SELECT)
     private List<Authority> authorityList = new ArrayList<Authority>(0);
     
     

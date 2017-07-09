@@ -11,7 +11,7 @@
     <div class="col-lg-10">
         <div class="block se-block <#--block-fill-white-->">
             <div class="header se-header se-header-bl">
-                &Lopf;&oopf;&gopf;&iopf;&nopf; &Lopf;&oopf;&gopf; &Lopf;&iopf;&sopf;&topf;
+                <h2>Login Log Today</h2>
             </div>
             <div class="content controls">
                 <table class="table table-striped">
@@ -27,12 +27,68 @@
                     <tbody>
                         <#list logList as log>
                         <tr>
-                            <td>${log.id!}</td>
-                            <#assign inOut = log.in?string("Sign In", "Sign Out")>
+                            <td>${log.ID!}</td>
+                            <#assign inOut = log.IN?string("Sign In", "Sign Out")>
                             <td>${inOut}</td>
-                            <td>${log.date!}</td>
-                            <td>${log.time!}</td>
-                            <td>${log.user.name!}</td>
+                            <td>${log.DATE!}</td>
+                            <td>${log.TIME!}</td>
+                            <td>${log.USER_NAME!}</td>
+                        </tr>
+                        </#list>
+                    </tbody>
+                </table>
+            </div>
+            <div class="header se-header se-header-bl">
+                <h2>Login Log :: Yesterday</h2>
+            </div>
+            <div class="content controls">
+                <table class="table table-striped">
+                    <thead class="se-thead">
+                    <tr>
+                        <th>ID</th>
+                        <th>IN/OUT</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                        <th>USER NAME</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <#list logList2 as log>
+                        <tr>
+                            <td>${log.ID!}</td>
+                            <#assign inOut = log.IN?string("Sign In", "Sign Out")>
+                            <td>${inOut}</td>
+                            <td>${log.DATE!}</td>
+                            <td>${log.TIME!}</td>
+                            <td>${log.USER_NAME!}</td>
+                        </tr>
+                        </#list>
+                    </tbody>
+                </table>
+            </div>
+            <div class="header se-header se-header-bl">
+                <h2>Login Log : The day before Yesterday</h2>
+            </div>
+            <div class="content controls">
+                <table class="table table-striped">
+                    <thead class="se-thead">
+                    <tr>
+                        <th>ID</th>
+                        <th>IN/OUT</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                        <th>USER NAME</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <#list logList3 as log>
+                        <tr>
+                            <td>${log.ID!}</td>
+                            <#assign inOut = log.IN?string("Sign In", "Sign Out")>
+                            <td>${inOut}</td>
+                            <td>${log.DATE!}</td>
+                            <td>${log.TIME!}</td>
+                            <td>${log.USER_NAME!}</td>
                         </tr>
                         </#list>
                     </tbody>

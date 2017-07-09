@@ -31,6 +31,8 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Autowired
     private TokenDao tokenDao;
+    @Autowired
+    private SecurityDAO securityDAO;
 
     // Token
 
@@ -249,6 +251,10 @@ public class SecurityServiceImpl implements SecurityService {
         return operationDAO.delete(operation);
     }
 
+    @Override
+    public List<Operation> getOperationList(Authority authority) {
+        return securityDAO.getOperationList(authority);
+    }
     //Group
 
 
@@ -324,6 +330,13 @@ public class SecurityServiceImpl implements SecurityService {
         return authorityDAO.findByAuthorityName(authorityName);
     }
 
+
+
+    @Override
+    public List<Authority> getAuthorityList(Group authorizedGroup) {
+        return securityDAO.getAuthorityList(authorizedGroup);
+    }
+
     @Override
     public boolean updateAuthorityOperations(Long authId, String operations) {
         Authority authority = authorityDAO.getAuthority(authId);
@@ -371,7 +384,11 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public List<Module> findAllModules() {
-        return moduleDAO.findAllModules();
+        List<Module> moduleList = moduleDAO.findAllModules();
+        for (Module m : moduleList) {
+            m.setOperationList(securityDAO.getOperationList(m));
+        }
+        return moduleList;
     }
 
 

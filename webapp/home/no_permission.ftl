@@ -7,7 +7,7 @@
         <br/>
         <br/>
         <br/>
-        <h1>${message!}</h1>
+        <h1>No permission Sir</h1>
     </div>
 </div>
 </@layout.se_app_layout>

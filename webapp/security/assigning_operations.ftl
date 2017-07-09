@@ -10,7 +10,7 @@
         <div class="col-md-10">
             <div class="block se-block <#--block-fill-white-->">
                 <div class="header se-header">
-                    &Oopf;&popf;&eopf;&ropf;&aopf;&topf;&iopf;&oopf;&nopf; &Aopf;&sopf;&sopf;&iopf;&gopf;&nopf;&mopf;&eopf;&nopf;&topf;
+                    <h2>Operation Assigning</h2>
                 </div>
                 <div class="content controls">
                     <div class="form-row">
@@ -47,7 +47,7 @@
         <div class="col-lg-10">
             <div class="block se-block <#--block-fill-white-->">
                 <div class="header se-header se-header-bl">
-                    &Oopf;&popf;&eopf;&ropf;&aopf;&topf;&iopf;&oopf;&nopf; &Sopf;&eopf;&lopf;&eopf;&copf;&topf;&iopf;&oopf;&nopf;
+                    <h2>Operation List</h2>
                 </div>
                 <div class="content">
                     <select id="operationIds" name="operationIds" multiple="multiple">

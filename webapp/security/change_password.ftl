@@ -9,13 +9,20 @@
         <div class="col-md-6">
             <div class="block se-block <#--block-fill-white-->">
                 <div class="header se-header">
-                    &Copf;&hopf;&aopf;&nopf;&gopf;&eopf; &Popf;&aopf;&sopf;&sopf;&wopf;&oopf;&ropf;&dopf;
+                    <h2>Change Password</h2>
                 </div>
                 <div class="content controls">
                     <div class="form-row">
                         <div class="col-md-4 text-right">USERNAME</div>
                         <div class="col-md-6">
                             <input type="text" name="" value="${user.token.username}" disabled style="color:green" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-4 text-right">OLD PASSWORD</div>
+                        <div class="col-md-6">
+                            <input type="password" name="passOld" class="form-control"/>
                         </div>
                     </div>
                     <div class="form-row">
@@ -26,13 +33,7 @@
 
                     </div>
                     <div class="form-row">
-                        <div class="col-md-4 text-right">OLD PASSWORD</div>
-                        <div class="col-md-6">
-                            <input type="password" name="passOld" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-4 text-right">CONFIRM NEW PASSWORD</div>
+                        <div class="col-md-4 text-right">CONFIRM NEW</div>
                         <div class="col-md-6">
                             <input type="password" name="passNewRe" class="form-control"/>
                         </div>

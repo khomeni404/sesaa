@@ -9,14 +9,14 @@
         <div class="col-md-10">
             <div class="block se-block <#--block-fill-white-->">
                 <div class="header se-header">
-                    &Aopf;&uopf;&topf;&hopf;&oopf;&ropf;&iopf;&topf;&yopf; &Copf;&ropf;&eopf;&aopf;&topf;&eopf;
+                    <h2>New AUTHORITY</h2>
                 </div>
                 <div class="content controls">
                     <div class="form-row">
                         <div class="col-md-3 text-right">AUTHORITY NAME.</div>
                         <div class="col-md-4">
                             <input type="text" name="name" class="form-control"
-                                   value="retail_execution"/>
+                                   value=""/>
                         </div>
 
 
@@ -25,7 +25,7 @@
                     <div class="form-row">
                         <div class="col-md-3 text-right">AUTHORITY DESCRIPTION</div>
                         <div class="col-md-4">
-                            <textarea name="desc" id="desc" cols="5" class="form-control se-textarea">Retail Execution Authority</textarea>
+                            <textarea name="desc" id="desc" cols="5" class="form-control se-textarea"></textarea>
                         </div>
                         <div class="col-md-3"><input type="submit" class="form-control btn btn-success"
                                                      value="Save Authority"/>

@@ -1,47 +1,19 @@
 <div class="block block-drop-shadow">
     <div class="user bg-default bg-light-rtl">
-        <div class="info">
-            <#--<a href="#" class="informer informer-three">
-                <span>14 / 255</span>
-                Messages
-            </a>-->
-           <#-- <a href="#" class="informer informer-four">
-                <span>$549.44</span>
-                Balance
-            </a>-->
-            <img src="../resources/images/users/avatar.png" class="img-circle img-thumbnail"/>
-        </div>
+        <img src="../resources/images/logo/sesaa_logo.png" class="img-responsive img-thumbnail"/>
     </div>
     <div class="content list-group list-group-icons">
-        <a href="${ctx}/home/home.se" class="list-group-item"><span class="icon-home"></span>Home</a>
+        <a href="${ctx}/security/home.se" class="list-group-item"><span class="icon-home"></span>Security Home</a>
+        <#--<a href="${ctx}/home/home.se" class="list-group-item"><span class="icon-home"></span>Home</a>-->
         <a href="${ctx}/security/editPassword.se" class="list-group-item"><span class="icon-key"></span>Change Password</a>
         <a href="${ctx}/auth/logout.se" class="list-group-item"><span class="icon-off text-danger"></span>Logout</a>
     </div>
 </div>
 
-<#--
-<div class="block block-drop-shadow">
-    <div class="head bg-dot20">
-        <div class="form-row">
-            <div class="col-md-12">
-                <form action="${ctx}/shop/searchSalesLedger.se" method="GET">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <span class="icon-search"></span>
-                        </div>
-                        <input type="text" name="salesLedgerSearchText" id="salesLedgerSearchText" class="form-control"
-                               style="color: #ffffff" placeholder="Order search"/>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>-->
-
 <div class="block block-drop-shadow">
     <div class="user bg-default bg-light-rtl">
 
-            <img src="../resources/images/logo/manager.jpg" class="img-rounded img-thumbnail"/>
+            <img src="../resources/images/common/sec_sign_1.png" class="img-responsive img-thumbnail"/>
 
     </div>
 </div>

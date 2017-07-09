@@ -57,6 +57,8 @@ public interface SecurityService {
 
     public boolean delete(Operation operation);
 
+    List<Operation> getOperationList(Authority authority);
+
     //Module
     public boolean save(Module module);
 
@@ -84,6 +86,7 @@ public interface SecurityService {
     public Group getGroup(Long id);
 
     public Group getGroup(String groupName);
+
 
     //UserGroup
     public boolean save(UserGroup group);
@@ -115,6 +118,8 @@ public interface SecurityService {
     public Authority getAuthority(Long id);
 
     public Authority findByAuthorityName(String authorityName);
+
+    List<Authority> getAuthorityList(Group authorizedGroup);
 
 
     //public boolean save(Module component);

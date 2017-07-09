@@ -20,10 +20,11 @@ public class Authority implements Serializable{
 	private String name;
 	private String description;
 	
-	@ManyToMany(mappedBy = "authorityList")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "authorityList")
+    @Fetch(FetchMode.SELECT)
 	private List<Group> groupList = new ArrayList<Group>(0);
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY) //EAGER
     @Fetch(FetchMode.SELECT)
     @JoinTable(name = "sec_zt_authority_operation",
             joinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")},

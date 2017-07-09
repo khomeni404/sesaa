@@ -9,7 +9,7 @@
         <div class="col-md-10">
             <div class="block se-block <#--block-fill-white-->">
                 <div class="header se-header">
-                    &Oopf;&popf;&eopf;&ropf;&aopf;&topf;&iopf;&oopf;&nopf; &Copf;&ropf;&eopf;&aopf;&topf;&eopf;
+                    <h2>Create Operation</h2>
                 </div>
                 <div class="content controls">
                     <div class="form-row">

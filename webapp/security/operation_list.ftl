@@ -3,12 +3,10 @@
     <#assign ctx = rc.getContextPath()/>
     <#include "../se_template/array.ftl">
 <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="block se-block">
             <div class="header se-header">
-                &Mopf;&oopf;&dopf;&uopf;&lopf;&eopf; &  &Oopf;&popf;&eopf;&ropf;&aopf;&topf;&iopf;&oopf;&nopf;  &nbsp;&nbsp;
-                &Lopf;&iopf;&sopf;&topf;
+                <h2>Module And Operation List</h2>
             </div>
             <div class="content controls">
                 <table class="table table-striped">
@@ -18,7 +16,8 @@
                         <th width="15%">Module Name</th>
                         <th width="25%">Module Description</th>
                         <th width="5%">Op.ID</th>
-                        <th width="45%">Operation Description</th>
+                        <th width="25%">Operation Description</th>
+                        <th width="20%">Action</th>
 
                     </tr>
                     </thead>
@@ -36,7 +35,8 @@
                                     <#list module.operationList as operation>
                                         <tr>
                                             <td width="5%">${modId}.${opeId}</td>
-                                            <td width="45%">${operation.description!}</td>
+                                            <td width="25%">${operation.description!}</td>
+                                            <td width="20%">${ctx}/${module.alias!}/${operation.name!}.se</td>
                                         </tr>
                                         <#assign opeId = 1+opeId>
                                     </#list>

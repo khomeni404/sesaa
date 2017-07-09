@@ -3,6 +3,7 @@ package net.softengine.security.service;
 import net.softengine.security.AuthorizationFilter;
 import net.softengine.security.SessionUtil;
 import net.softengine.security.dao.GroupDAO;
+import net.softengine.security.dao.SecurityDAO;
 import net.softengine.security.dao.UserDao;
 import net.softengine.security.model.Authority;
 import net.softengine.security.model.Group;
@@ -11,6 +12,7 @@ import net.softengine.security.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,17 +23,33 @@ public class SESAAServiceImpl implements
     @Autowired
     private UserDao userDao;
     @Autowired
-    GroupDAO groupDao;
+    private GroupDAO groupDao;
+    @Autowired
+    private SecurityDAO securityDAO;
+
 
     @Override
     public boolean authenticate(String username, String password) {
         // call dao method to retrieve the user object
         User user = userDao.get(username, password);
 
-        if (user instanceof User) {
-
+        if (user != null) {
             user.setLastActivity(new Date());
-            AuthorizationFilter.setAuthorization(user);
+            List<Authority> credentials;
+            List<Group> authorizedGroups = user.getGroupList();
+            List<Operation> operationList = new ArrayList<>();
+
+            if (authorizedGroups != null) {
+                for (Group authorizedGroup : authorizedGroups) {
+                    credentials = securityDAO.getAuthorityList(authorizedGroup);
+                    for (Authority authority : credentials) {
+                        List<Operation> operations = securityDAO.getOperationList(authority);
+                        operationList.addAll(operations);
+                    }
+                }
+            }
+
+            AuthorizationFilter.setAuthorization(user, operationList);
 
             return true;
         }

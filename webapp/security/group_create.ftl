@@ -9,14 +9,14 @@
         <div class="col-md-10">
             <div class="block se-block <#--block-fill-white-->">
                 <div class="header se-header">
-                    &Iopf;&topf;&eopf;&mopf; &Copf;&ropf;&eopf;&aopf;&topf;&eopf;
+                    <h2>New Group</h2>
                 </div>
                 <div class="content controls">
                     <div class="form-row">
                         <div class="col-md-3 text-right">GROUP NAME.</div>
                         <div class="col-md-4">
                             <input type="text" name="name" class="form-control"
-                                   value="Executive Staff"/>
+                                   value=""/>
                         </div>
 
 

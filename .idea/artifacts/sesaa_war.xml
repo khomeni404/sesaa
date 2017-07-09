@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sesaa:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/sesaa_war</output-path>
+    <root id="archive" name="sesaa.war">
+      <element id="artifact" artifact-name="sesaa:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -43,7 +43,11 @@ public class AuthenticationController {
         // Call the service method to retrieve the user object by username and password.
         boolean isAuthenticated = authService.authenticate(username, password);
         if (isAuthenticated) {
-            return new ModelAndView("redirect:/home/home.se");
+            if (username.equals("mak")) {
+                return new ModelAndView("redirect:/security/home.se");
+            } else {
+                return new ModelAndView("redirect:/home/home.se");
+            }
         } else {
             return new ModelAndView("redirect:/");
         }

@@ -25,10 +25,11 @@ public class Group implements Serializable { // authorization group
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "groupList")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "groupList")
+    @Fetch(value = FetchMode.SELECT)
     private List<User> userList = new ArrayList<User>(0);
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY) //EAGER
     @Fetch(value = FetchMode.SELECT)
     @JoinTable(name = "SEC_zt_group_authority",
             joinColumns = {@JoinColumn(name = "auth_group_id", referencedColumnName = "id")},

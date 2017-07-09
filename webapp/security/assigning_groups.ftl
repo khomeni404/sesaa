@@ -17,9 +17,33 @@
                         <div class="col-md-3 text-right">USERS</div>
                         <div class="col-md-4">
                             <select name="userId" id="userId" class="form-control se-select">
-                                <#list userList as user>
-                                    <option value="${user.id}">${user.name} : ${user.getDiscriminatorValue()}</option>
-                                </#list>
+                                <optgroup label="Employee">
+                                    <#list userList as user>
+                                        <#assign type = user.getDiscriminatorValue()>
+                                        <#if type = 'Employee'>
+                                            <option value="${user.id}">${user.name}
+                                                : ${user.getDiscriminatorValue()}</option>
+                                        </#if>
+                                    </#list>
+                                </optgroup>
+                                <optgroup label="Customer">
+                                    <#list userList as user>
+                                        <#assign type = user.getDiscriminatorValue()>
+                                        <#if type = 'Customer'>
+                                            <option value="${user.id}">${user.name}
+                                                : ${user.getDiscriminatorValue()}</option>
+                                        </#if>
+                                    </#list>
+                                </optgroup>
+                                <optgroup label="Member">
+                                    <#list userList as user>
+                                        <#assign type = user.getDiscriminatorValue()>
+                                        <#if type = 'Member'>
+                                            <option value="${user.id}">${user.name}
+                                                : ${user.getDiscriminatorValue()}</option>
+                                        </#if>
+                                    </#list>
+                                </optgroup>
                             </select>
                         </div>
 
@@ -52,7 +76,7 @@
                 <div class="content">
                     <select id="groupIds" name="groupIds" multiple="multiple">
                         <#list groupList as group>
-                                <option value="${group.id!}" data-section="All Group">${group.name!}</option>
+                            <option value="${group.id!}" data-section="All Group">${group.name!}</option>
                         </#list>
                     </select>
                 </div>

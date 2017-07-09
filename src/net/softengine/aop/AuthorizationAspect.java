@@ -88,7 +88,7 @@ public class AuthorizationAspect {
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("PageTitle", "Sorry");
-        ActionResult go = SELicence.checkLicenceValidity(Applications.eSHOP);
+        ActionResult go = SELicence.checkLicenceValidity(Applications.QRF);
         if (go.isSuccess()) {
             if (isAllowed) {
                 return proceedJoinPoint.proceed();
@@ -109,14 +109,12 @@ public class AuthorizationAspect {
                 attempt.setOperationName(operationName);
                 attempt.setReferer(referer);
                 securityService.save(attempt);
-                map.put("message", "You have no permission to execute this operation.");
-//                if (sessionUser instanceof Customer) {
-//                    return new ModelAndView("cust_template/pages/no_permission", map);
-//                }else if (sessionUser instanceof Staff) {
-//                    return new ModelAndView("home/no_permission", map);
-//                }else {
+                map.put("npm", "You have no permission to execute this operation.");
+                if (sessionUser instanceof User) {
+                    return new ModelAndView("home/no_permission", map);
+                } else {
                     return new ModelAndView("redirect:/auth/logout.se");
-//                }
+                }
 
             }
         } else {
