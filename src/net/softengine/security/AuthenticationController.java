@@ -34,7 +34,7 @@ public class AuthenticationController {
     public ModelAndView login() throws Exception {
         //bootStrap.createDefaultAdmin();
         return new ModelAndView("home/login");
-    }
+    } // abcdef g hi - babu jamal shiltu
 
     @RequestMapping(method = RequestMethod.POST, value = "/authenticateUser.se")
     public ModelAndView authenticateUser(@RequestParam("username") String username,

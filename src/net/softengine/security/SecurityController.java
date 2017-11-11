@@ -485,12 +485,12 @@ public class SecurityController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/updateAuthorityOperations.se")
-    public ModelAndView updateAuthorityOperations(@RequestParam Long authId,
+    public ModelAndView updateAuthorityOperations(@RequestParam(value = "authId[]") Long[] authId,
                                                   @RequestParam(required = false) String operationIds) {
         Map<String, Object> map = new HashMap<>();
         map.put("PageTitle", "Assigning Operation");
 
-        boolean assigned = securityService.updateAuthorityOperations(authId, operationIds);
+        boolean assigned = false;// securityService.updateAuthorityOperations(authId, operationIds);
 
         return new ModelAndView("redirect:/security/assigningOperations.se", map);
     }
