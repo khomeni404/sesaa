@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 public class NumberUtil {
 
     public static void main(String[] args) {
-        System.out.println(toCommaFormattedTaka(1.2653));
+        System.out.println(inWord(11111121));
     }
     public static String toCommaFormattedTaka(Object takaPaisaObj) {
         if(takaPaisaObj == null ) return "";
@@ -121,11 +121,11 @@ public class NumberUtil {
         snumber = df.format(number);
 
         int billions = Integer.parseInt(snumber.substring(0,5));
-        // nnnXXXnnnnnn
+
         int crore  = Integer.parseInt(snumber.substring(5,7));
-        // nnnnnnXXXnnn
+
         int lakh = Integer.parseInt(snumber.substring(7,9));
-        // nnnnnnnnnXXX
+
         int thousands = Integer.parseInt(snumber.substring(9,12));
         System.out.println("crore = " + billions);
         System.out.println("lakh = " + crore);
@@ -159,8 +159,7 @@ public class NumberUtil {
                     tradBillions = "";
                     break;
                 case 1 :
-                    tradBillions = convertLessThanOneThousand(crore)
-                            + " one crore ";
+                    tradBillions = " one crore ";
                     break;
                 default :
                     tradBillions = convertLessThanOneThousand(crore)
@@ -174,8 +173,7 @@ public class NumberUtil {
                     tradMillions = "";
                     break;
                 case 1 :
-                    tradMillions = convertLessThanOneThousand(lakh)
-                            + " one lakh ";
+                    tradMillions = " one lakh ";
                     break;
                 default :
                     tradMillions = convertLessThanOneThousand(lakh)
