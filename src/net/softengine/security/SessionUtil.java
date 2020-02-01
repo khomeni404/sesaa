@@ -118,4 +118,43 @@ public class SessionUtil {
         }
         return null;
     }
+
+    public static Long getCashAccountNo() {
+        Object accNo = getSession().getAttribute(SecurityConstants.SESSION_USER_CASH_AC_NO);
+        if (accNo instanceof Long) {
+            return (Long) accNo;
+        }
+        return null;
+    }
+
+    public static void setAttribute(String key, Object value) {
+        getSession().setAttribute(key, value);
+    }
+
+    public static Object getAttribute(String key) {
+        return getSession().getAttribute(key);
+    }
+
+    public static void removeAttribute(String key) {
+        getSession().removeAttribute(key);
+    }
+
+    public static void invalidate() {
+        HttpSession userSession = getSession();
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_ID);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_DV);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_USERNAME);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_AUTHORIZED_GROUPS);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_AUTHORITIES);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_GRANTED_OPERATIONS);
+        userSession.removeAttribute(SecurityConstants.SESSION_SAVE);
+        userSession.removeAttribute(SecurityConstants.DASHBOARD_LINK);
+        userSession.removeAttribute(SecurityConstants.REFERER);
+        userSession.removeAttribute(SecurityConstants.REQUEST_MAPPING);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_CASH_AC_NO);
+        userSession.invalidate();
+    }
+
+
 }

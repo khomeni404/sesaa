@@ -18,6 +18,7 @@ public class SecurityConstants {
 	public static final String SESSION_USER_AUTHORIZED_GROUPS = "session_user_authorized_groups";
 	public static final String SESSION_USER_AUTHORITIES = "session_user_authorities";
 	public static final String SESSION_USER_GRANTED_OPERATIONS = "session_user_operations";
+	public static final String SESSION_USER_CASH_AC_NO = "session_user_cash_ac_no";
 
     public static final String SESSION_SAVE = "save";
     public static final String DASHBOARD_LINK = "../home.se";
