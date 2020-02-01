@@ -36,17 +36,21 @@ public class SESAAServiceImpl implements
         if (user != null) {
             user.setLastActivity(new Date());
             List<Authority> credentials;
-            List<Group> authorizedGroups = user.getGroupList();
             List<Operation> operationList = new ArrayList<>();
+            try {
+                List<Group> authorizedGroups = user.getGroupList();
 
-            if (authorizedGroups != null) {
-                for (Group authorizedGroup : authorizedGroups) {
-                    credentials = securityDAO.getAuthorityList(authorizedGroup);
-                    for (Authority authority : credentials) {
-                        List<Operation> operations = securityDAO.getOperationList(authority);
-                        operationList.addAll(operations);
+                if (authorizedGroups != null) {
+                    for (Group authorizedGroup : authorizedGroups) {
+                        credentials = securityDAO.getAuthorityList(authorizedGroup);
+                        for (Authority authority : credentials) {
+                            List<Operation> operations = securityDAO.getOperationList(authority);
+                            operationList.addAll(operations);
+                        }
                     }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
             AuthorizationFilter.setAuthorization(user, operationList);

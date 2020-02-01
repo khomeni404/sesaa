@@ -81,7 +81,7 @@ public class User implements Serializable {
     @JoinColumn(name = "u_opid")
     private User operator;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SELECT)
     @JoinTable(name = "SEC_zt_user_group",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
