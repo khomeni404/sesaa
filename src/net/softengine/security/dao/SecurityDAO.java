@@ -17,6 +17,7 @@ public interface SecurityDAO {
     List<Authority> getAuthorityList(Group authorizedGroup);
 
     List<User> getUserList(Group authorizedGroup);
+    List<Group> getGroupList(User user);
 
     List<Operation> getOperationList(Authority authority);
 

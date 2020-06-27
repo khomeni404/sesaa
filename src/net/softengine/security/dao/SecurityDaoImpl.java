@@ -58,6 +58,14 @@ public class SecurityDaoImpl implements SecurityDAO {
     }
 
     @Override
+    public List<Group> getGroupList(User user) {
+        DetachedCriteria criteria = DetachedCriteria.forClass(Group.class)
+                .createAlias("userList", "User")
+                .add(Restrictions.eq("User.id", user.getId()));
+        return (List<Group>) hibernateTemplate.findByCriteria(criteria);
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
     public List<Operation> getOperationList(Authority authority) {
         DetachedCriteria criteria = DetachedCriteria.forClass(Operation.class)

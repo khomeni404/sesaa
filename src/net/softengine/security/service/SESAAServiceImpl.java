@@ -9,6 +9,7 @@ import net.softengine.security.model.Authority;
 import net.softengine.security.model.Group;
 import net.softengine.security.model.Operation;
 import net.softengine.security.model.User;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class SESAAServiceImpl implements
     private SecurityDAO securityDAO;
 
 
+
     @Override
     public boolean authenticate(String username, String password) {
         // call dao method to retrieve the user object
@@ -38,7 +40,7 @@ public class SESAAServiceImpl implements
             List<Authority> credentials;
             List<Operation> operationList = new ArrayList<>();
             try {
-                List<Group> authorizedGroups = user.getGroupList();
+                List<Group> authorizedGroups = null; // securityDAO.getGroupList(user);
 
                 if (authorizedGroups != null) {
                     for (Group authorizedGroup : authorizedGroups) {
